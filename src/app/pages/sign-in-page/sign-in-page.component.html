@@ -1,0 +1,16 @@
+<div class="signin-container">
+    <section class="card1">
+        <h1 class="heading1">Sign In</h1>
+        <form [formGroup]="signInForm" class="form1" (ngSubmit)="doSignIn()">
+            <div class="formfield">
+                <span class="label">Username</span>
+                <input autocomplete="off" [formControl]="usernameControl" type="text" name="username" />
+            </div>
+            <div class="formfield">
+                <span class="label">Password</span>
+                <input [formControl]="passwordControl" type="password" name="password" />
+            </div>
+            <button type="submit" class="button1 bg-primary">Sign In</button>
+        </form>
+    </section>
+</div>

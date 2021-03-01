@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.signin-container {
+  @apply w-full h-full flex justify-center items-center bg-gray-900;
+  background: theme('backgroundColor.gray.900');
+  background: radial-gradient(
+    circle,
+    theme('backgroundColor.gray.800') 0%,
+    theme('backgroundColor.black') 75%
+  );
+}
+
+// Styled
+
+.heading1 {
+  @apply text-2xl mb-2 font-medium text-gray-600;
+}
+
+.card1 {
+  @apply px-5 py-6 rounded-xl shadow-lg w-full max-w-sm bg-gray-50;
+}
+
+.form1 {
+  @apply mt-8 w-full;
+  button {
+    @apply mt-2;
+  }
+}
+
+.formfield {
+  @apply mb-2;
+
+  .label {
+    @apply text-gray-700;
+  }
+
+  input {
+    @apply mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+}
+
+.button1 {
+  @apply focus:outline-none text-sm w-24 py-3 rounded-md font-semibold text-white bg-blue-500 hover:bg-blue-400 ring-0 focus:ring-2 transition-all;
+}
