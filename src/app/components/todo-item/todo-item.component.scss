@@ -1,0 +1,10 @@
+:host {
+  list-style-type: none;
+  display: block;
+  padding: 6px;
+  margin-bottom: 3px;
+  @apply border-b;
+  &:hover {
+    cursor: pointer;
+  }
+}

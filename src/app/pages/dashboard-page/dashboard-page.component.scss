@@ -1,0 +1,42 @@
+:host {
+  .todos-container {
+    min-width: 300px;
+    .todos-header {
+      @apply bg-purple-800 text-gray-50 font-bold text-center py-2 px-3 text-sm rounded-sm;
+    }
+    .todos-list {
+      @apply bg-white px-3 py-2 rounded-sm shadow-sm mt-3 mb-2 relative;
+      min-height: 200px;
+
+      .todo-item {
+        list-style-type: none;
+        padding: 6px;
+        margin-bottom: 3px;
+        @apply border-b;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .emptylist {
+        @apply absolute left-0 right-0 mx-auto text-sm text-center select-none text-gray-700;
+        bottom: 50%;
+      }
+    }
+
+    .todos-add {
+      display: flex;
+      justify-content: space-between;
+      input {
+        @apply relative border-purple-400 focus:border-purple-600 bg-gray-50 px-3 py-1 transition-all outline-none;
+      }
+      .addtodo-btn {
+        @apply text-xs px-3 py-1 text-white border-purple-800 bg-purple-800 hover:bg-purple-600 transition-all outline-none border-0;
+
+        &:disabled {
+          @apply cursor-default bg-purple-400 pointer-events-none;
+        }
+      }
+    }
+  }
+}

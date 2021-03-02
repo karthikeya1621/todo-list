@@ -13,13 +13,15 @@ import { SignUpPageComponent } from './pages/sign-up-page/sign-up-page.component
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component'
 import { SignInPageComponent } from './pages/sign-in-page/sign-in-page.component';
 import { AuthService } from './services/auth.service';
+import { TodoItemComponent } from './components/todo-item/todo-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignUpPageComponent,
     SignInPageComponent,
-    DashboardPageComponent
+    DashboardPageComponent,
+    TodoItemComponent
   ],
   imports: [
     BrowserModule,

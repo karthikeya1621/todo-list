@@ -14,12 +14,10 @@ body {
 
 .signin-container {
   @apply w-full h-full flex justify-center items-center bg-gray-900;
-  background: theme('backgroundColor.gray.900');
-  background: radial-gradient(
-    circle,
-    theme('backgroundColor.gray.800') 0%,
-    theme('backgroundColor.black') 75%
-  );
+}
+
+.dashboard-container {
+  @apply w-full h-full flex justify-center items-center bg-purple-50;
 }
 
 // Styled
