@@ -1,1 +1,5 @@
-<div (click)="toggleCompleted()" [class.done]="_toDo.isDone">{{_toDo.title}}</div>
+<div class="todo-item" (click)="toggleCompleted($event)" [class.done]="_toDo.isDone">
+  <span class="todo-title">{{ _toDo.title }}</span>
+  <span class="todo-delete material-icons" (click)="onDelete($event, _toDo.id)">delete_outline</span>
+</div>
+<span class="todo-starttime">{{(_toDo.createdAt | ago) | async}}</span>

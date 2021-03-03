@@ -1,22 +1,61 @@
 :host {
   .todos-container {
-    min-width: 300px;
+    width: 300px;
+    .user-info{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .email{
+        display: inline-block;
+        padding-bottom: 2px;
+        margin-bottom: 4px;
+        margin-left: 3px;
+        position: relative;
+        top: -4px;
+        border-bottom: 2px dotted gray;
+      }
+
+      .logout{
+        position: relative;
+        top: -6px;
+        cursor: pointer;
+      }
+    }
     .todos-header {
       @apply bg-purple-800 text-gray-50 font-bold text-center py-2 px-3 text-sm rounded-sm;
     }
     .todos-list {
-      @apply bg-white px-3 py-2 rounded-sm shadow-sm mt-3 mb-2 relative;
-      min-height: 200px;
+      @apply bg-white px-3 py-2 rounded-sm shadow-lg mt-3 mb-2 relative;
+      height: calc(100vh - 200px);
+      width: 100%;
+      overflow-y: auto;
+      transition: all 0.24s ease;
 
-      .todo-item {
-        list-style-type: none;
-        padding: 6px;
-        margin-bottom: 3px;
-        @apply border-b;
-        &:hover {
-          cursor: pointer;
-        }
+      &::-webkit-scrollbar {
+        width: 5px;
       }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+      
+      &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      // .todo-item {
+      //   list-style-type: none;
+      //   padding: 6px;
+      //   margin-bottom: 3px;
+      //   @apply border-b;
+      //   &:hover {
+      //     cursor: pointer;
+      //   }
+      // }
 
       .emptylist {
         @apply absolute left-0 right-0 mx-auto text-sm text-center select-none text-gray-700;
@@ -28,6 +67,7 @@
       display: flex;
       justify-content: space-between;
       input {
+        width: 75%;
         @apply relative border-purple-400 focus:border-purple-600 bg-gray-50 px-3 py-1 transition-all outline-none;
       }
       .addtodo-btn {

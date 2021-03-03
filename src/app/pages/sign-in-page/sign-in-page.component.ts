@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 import {
   FormBuilder,
   FormControl,
@@ -18,27 +19,41 @@ export class SignInPageComponent implements OnInit {
   usernameControl = new FormControl('', Validators.required);
   passwordControl = new FormControl('', Validators.required);
 
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private auth: AuthService,
+    private router: Router,
+    private fireauth: AngularFireAuth
+  ) {}
 
   ngOnInit(): void {
+
+    this.auth.verifyUserAuth()
+
     this.signInForm = this.fb.group({
       username: this.usernameControl,
       password: this.passwordControl,
     });
   }
 
-  doSignIn() {
+  async doSignIn() {
     this.signInForm.markAllAsTouched();
     if (this.signInForm.valid || true) {
       // [SignIn] Sign In
 
-      if (true) {
-        this.auth._isLoggedIn.next(true);
-        console.log('signInSuccess')
-        this.router.navigate(['/'])
-      } else {
-        this.auth._isLoggedIn.next(false);
-        console.log('signInFailure')
+      try {
+        const { user } = await this.fireauth.signInWithEmailAndPassword(
+          this.usernameControl.value,
+          this.passwordControl.value
+        );
+        if (user) {
+          this.auth.setCurrentUser(user);
+          this.auth.confirmSignIn();
+          this.router.navigate(['/']);
+        }
+      } catch (error) {
+        this.auth.signOut();
+        console.log(error);
       }
     } else {
       // Show Validation Errors

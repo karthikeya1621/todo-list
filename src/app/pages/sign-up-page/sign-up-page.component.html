@@ -1,1 +1,17 @@
-<p>sign-up-page works!</p>
+<div class="signup-container">
+    <section class="card1">
+        <h1 class="heading1">Sign Up</h1>
+        <form [formGroup]="signUpForm" class="form1" (ngSubmit)="doSignUp()">
+            <div class="formfield">
+                <span class="label">Email</span>
+                <input autocomplete="off" [formControl]="usernameControl" type="text" name="suusername" />
+            </div>
+            <div class="formfield">
+                <span class="label">Password</span>
+                <input [formControl]="passwordControl" type="password" name="supassword" />
+            </div>
+            <button type="submit" class="button1">Sign Up</button>
+        </form>
+        <small class="note1">Already have an account? <span routerLink="/signin">Sign In here</span></small>
+    </section>
+</div>

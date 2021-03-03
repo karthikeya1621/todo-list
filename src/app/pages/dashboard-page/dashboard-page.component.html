@@ -1,21 +1,35 @@
 <div class="dashboard-container">
-    <div class="todos-container">
-        <div class="todos-header">
-            Your To-Do List
-        </div>
-        <div class="todos-list">
-            <ng-container *ngIf="(toDos$ | async) as toDos; else noList">
-                <app-todo-item [toDo]="toDo" *ngFor="let toDo of toDos"></app-todo-item>
-            </ng-container>
-            <ng-template #noList>
-                <small class="emptylist">
-                    Your todo list is empty!
-                </small>
-            </ng-template>
-        </div>
-        <div class="todos-add">
-            <input [formControl]="newTask" id="addtodo-input" placeholder="Enter a task name here..." type="text" />
-            <button (click)="addTask()" class="addtodo-btn">Add Task</button>
-        </div>
+  <div class="todos-container">
+    <div class="user-info" *ngIf="user$ | async as user">
+      <h3>
+        <span class="material-icons">person_outline</span>
+        <span class="email">{{ user.email }}</span>
+      </h3>
+      <span class="material-icons logout" (click)="logoutUser()">logout</span>
     </div>
+    <div class="todos-header">Your To-Do List</div>
+    <div class="todos-list">
+      <ng-container *ngIf="toDos$ | async as toDos; else noList">
+        <app-todo-item
+          (delete)="deleteToDo($event)"
+          (update)="updateToDo($event)"
+          [toDo]="toDo"
+          *ngFor="let toDo of toDos"
+        ></app-todo-item>
+      </ng-container>
+      <ng-template #noList>
+        <small class="emptylist"> Your todo list is empty! </small>
+      </ng-template>
+    </div>
+    <div class="todos-add">
+      <input
+        [formControl]="newTask"
+        id="addtodo-input"
+        placeholder="Enter a task name here..."
+        type="text"
+        autocomplete="off"
+      />
+      <button (click)="addTask()" class="addtodo-btn">Add Task</button>
+    </div>
+  </div>
 </div>

@@ -3,14 +3,15 @@
         <h1 class="heading1">Sign In</h1>
         <form [formGroup]="signInForm" class="form1" (ngSubmit)="doSignIn()">
             <div class="formfield">
-                <span class="label">Username</span>
-                <input autocomplete="off" [formControl]="usernameControl" type="text" name="username" />
+                <span class="label">Email</span>
+                <input autocomplete="off" [formControl]="usernameControl" type="text" name="siusername" />
             </div>
             <div class="formfield">
                 <span class="label">Password</span>
-                <input [formControl]="passwordControl" type="password" name="password" />
+                <input [formControl]="passwordControl" type="password" name="sipassword" />
             </div>
             <button type="submit" class="button1">Sign In</button>
         </form>
+        <small class="note1">Don't have an account? <span routerLink="/signup">Create one</span></small>
     </section>
 </div>

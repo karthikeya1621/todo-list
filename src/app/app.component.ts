@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { signUp } from './auth/store/actions/signup.actions';
-import { User } from './auth/store/models/signup.model';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +10,7 @@ import { User } from './auth/store/models/signup.model';
 export class AppComponent {
   title = 'todo-list';
 
-  constructor(private store: Store<User[]>) {
+  constructor(private auth: AuthService) {
+    auth.verifyUserAuth();
   }
 }

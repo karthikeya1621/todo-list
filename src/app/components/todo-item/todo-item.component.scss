@@ -2,9 +2,58 @@
   list-style-type: none;
   display: block;
   padding: 6px;
+  position: relative;
+  padding-bottom: 24px;
   margin-bottom: 3px;
-  @apply border-b;
+  @apply border-b border-purple-400;
   &:hover {
     cursor: pointer;
+  }
+
+  &:last-of-type{
+    border-color: transparent;
+  }
+
+  .todo-starttime{
+    @apply text-xs absolute;
+    top: 34px;
+    font-style: italic;
+  }
+
+  .todo-item{
+    position: relative;
+    transition: all 0.15s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .todo-title{
+      position: relative;
+      @apply text-base font-medium;
+    }
+
+    .todo-delete{
+      @apply text-lg cursor-pointer hover:text-red-600;
+      color: #aaa;
+    }
+
+    & .todo-title::before{
+      position: absolute;
+      content: '';
+      border-top: 2px solid #666;
+      top: 50%;
+      left: -10px;
+      width: calc(100% + 20px);
+      transform: scaleX(0);
+      transition: all 0.24s ease;
+      transform-origin: left center;
+    }
+
+    &.done{
+      color: #666;
+      & .todo-title::before{
+        transform: scaleX(1);
+      }
+    }
   }
 }
